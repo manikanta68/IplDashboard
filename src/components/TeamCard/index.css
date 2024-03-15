@@ -1,0 +1,26 @@
+.teamCard-item-container {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  border-style: solid;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #bdbde6;
+}
+.teamCard-image {
+  height: 90px;
+  width: 90px;
+  margin-right: 10px;
+}
+.teamCard-name {
+  font-family: 'Roboto';
+  font-size: 19px;
+  color: white;
+  text-align: center;
+}
+
+.item-link {
+  text-decoration: none;
+}

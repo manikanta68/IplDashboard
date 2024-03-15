@@ -1,0 +1,21 @@
+.bg-container {
+  background-color: yellow;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+}
+.list-type {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0px;
+}
+.head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}

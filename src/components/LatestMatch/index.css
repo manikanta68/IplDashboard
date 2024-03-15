@@ -1,0 +1,17 @@
+.enemy {
+  background-color: gray;
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+.url-logo {
+  height: 90px;
+  width: 90px;
+  margin-left: 300px;
+  margin-right: 300px;
+}
+.match-heading {
+  font-size: 20px;
+}

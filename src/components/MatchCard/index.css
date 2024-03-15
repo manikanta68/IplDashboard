@@ -1,0 +1,26 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 380px;
+  background-color: #0f172a;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+}
+.logo {
+  height: 50px;
+  width: 50px;
+}
+.text {
+  text-align: center;
+}
+.loss {
+  color: #18ed66;
+}
+.win {
+  color: #e31a1a;
+}
