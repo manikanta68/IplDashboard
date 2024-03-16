@@ -1,5 +1,7 @@
 import {Component} from 'react'
+
 import Loader from 'react-loader-spinner'
+import {PieChart, Pie, Legend, Cell, ResponsiveContainer} from 'recharts'
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
@@ -8,7 +10,7 @@ import MatchCard from '../MatchCard'
 import './index.css'
 
 class TeamMatches extends Component {
-  state = {matchDetails: [], isLoading: false}
+  state = {matchDetails: [], isLoading: false, matchStatus: []}
 
   componentDidMount() {
     this.getTeamMatches()
@@ -50,16 +52,42 @@ class TeamMatches extends Component {
       venue: element.venue,
     }))
 
+    const WonList = recentMatches.filter(each => each.matchStatus === 'Won')
+
+    const LostList = recentMatches.filter(each => each.matchStatus === 'Lost')
+
+    const drawnList = recentMatches.filter(each => each.matchStatus === 'drawn')
+
+    const newObj = [
+      {
+        name: 'Won',
+        count: WonList.length,
+      },
+      {
+        name: 'Lost',
+        count: LostList.length,
+      },
+      {
+        name: 'drawn',
+        count: drawnList.length,
+      },
+    ]
+
+    console.log(newObj)
     const teamBannerUrl = jsonData.team_banner_url
 
     const newData = {latestMatches, recentMatches, teamBannerUrl}
 
-    this.setState({matchDetails: newData, isLoading: true})
+    this.setState({matchDetails: newData, isLoading: true, matchStatus: newObj})
+  }
+
+  goBack = () => {
+    const {history} = this.props
+    history.replace('/')
   }
 
   render() {
-    const {matchDetails, isLoading} = this.state
-    console.log(matchDetails)
+    const {matchDetails, isLoading, matchStatus} = this.state
 
     return (
       <div>
@@ -80,6 +108,35 @@ class TeamMatches extends Component {
                   <MatchCard eachItem={eachItem} key={eachItem.id} />
                 ))}
             </ul>
+            <button onClick={this.goBack} className="backButton" type="button">
+              Back
+            </button>
+
+            <ResponsiveContainer width="50%" height={300}>
+              <PieChart>
+                <Pie
+                  cx="70%"
+                  cy="40%"
+                  data={matchStatus}
+                  startAngle={0}
+                  endAngle={360}
+                  innerRadius="40%"
+                  outerRadius="70%"
+                  dataKey="count"
+                >
+                  <Cell name="Won" fill="green" />
+                  <Cell name="Lost" fill="red" />
+                  <Cell name="drawn" fill="gray" />
+                </Pie>
+                <Legend
+                  iconType="circle"
+                  layout="vertical"
+                  verticalAlign="middle"
+                  align="right"
+                  iconSize={10}
+                />
+              </PieChart>
+            </ResponsiveContainer>
           </div>
         ) : (
           <div testid="loader">

@@ -2,7 +2,6 @@ import './index.css'
 
 const MatchCard = props => {
   const {eachItem} = props
-  console.log(eachItem)
   const {competingTeamLogo, competingTeam, result, matchStatus} = eachItem
   const win = matchStatus === 'Lost' ? 'loss' : 'win'
   return (
