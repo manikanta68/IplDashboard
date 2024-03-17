@@ -1,7 +1,7 @@
 import {Component} from 'react'
 
 import Loader from 'react-loader-spinner'
-import {PieChart, Pie, Legend, Cell, ResponsiveContainer} from 'recharts'
+import {PieChart, Pie, Legend, Cell} from 'recharts'
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
@@ -112,31 +112,29 @@ class TeamMatches extends Component {
               Back
             </button>
 
-            <ResponsiveContainer width="50%" height={300}>
-              <PieChart>
-                <Pie
-                  cx="70%"
-                  cy="40%"
-                  data={matchStatus}
-                  startAngle={0}
-                  endAngle={360}
-                  innerRadius="40%"
-                  outerRadius="70%"
-                  dataKey="count"
-                >
-                  <Cell name="Won" fill="green" />
-                  <Cell name="Lost" fill="red" />
-                  <Cell name="drawn" fill="gray" />
-                </Pie>
-                <Legend
-                  iconType="circle"
-                  layout="vertical"
-                  verticalAlign="middle"
-                  align="right"
-                  iconSize={10}
-                />
-              </PieChart>
-            </ResponsiveContainer>
+            <PieChart width={1000} height={300}>
+              <Pie
+                cx="70%"
+                cy="40%"
+                data={matchStatus}
+                startAngle={0}
+                endAngle={360}
+                innerRadius="40%"
+                outerRadius="70%"
+                dataKey="count"
+              >
+                <Cell name="Won" fill="green" />
+                <Cell name="Lost" fill="red" />
+                <Cell name="drawn" fill="gray" />
+              </Pie>
+              <Legend
+                iconType="circle"
+                layout="vertical"
+                verticalAlign="middle"
+                align="right"
+                iconSize={10}
+              />
+            </PieChart>
           </div>
         ) : (
           <div testid="loader">
